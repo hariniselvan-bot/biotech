@@ -136,7 +136,7 @@ font-size:22px;
 
 }
 
-/* RANDOM PARTICLE POSITION */
+/* PARTICLE POSITION */
 
 .particles span:nth-child(1){left:10%; animation-delay:0s}
 .particles span:nth-child(2){left:25%; animation-delay:2s}
@@ -173,11 +173,25 @@ font-size:22px;
 Oops! The page you are looking for doesn't exist.
 </p>
 
-<a href="home.html" class="home-btn">
-<i class="fa fa-home"></i> Back to Home
+<a href="javascript:history.back()" class="home-btn">
+<i class="fa fa-arrow-left"></i> Go Back
 </a>
 
 </div>
+
+<script>
+
+function goBack(){
+
+if(document.referrer !== ""){
+window.history.back();
+}else{
+window.location.href="home.html";
+}
+
+}
+
+</script>
 
 </body>
 </html>
