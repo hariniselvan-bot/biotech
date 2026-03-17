@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Medical Records</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+display:flex;
+background:#0f1117;
+color:white;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:250px;
+height:100vh;
+background:#151922;
+padding:25px;
+border-right:1px solid #1f2630;
+position:fixed;
+top:0;
+left:0;
+z-index:1000;
+transition:.3s;
+}
+
+.logo{
+font-size:20px;
+font-weight:600;
+margin-bottom:40px;
+}
+
+.menu a{
+display:flex;
+align-items:center;
+gap:12px;
+text-decoration:none;
+color:#cbd5e1;
+padding:12px;
+border-radius:8px;
+margin-bottom:10px;
+transition:.3s;
+}
+
+.menu a:hover{
+background:#1e2430;
+color:white;
+}
+
+/* MAIN */
+
+.main{
+margin-left:250px;
+width:100%;
+min-height:100vh;
+}
+
+/* TOPBAR */
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:#151922;
+border-bottom:1px solid #1f2630;
+}
+
+.search{
+background:#1e2430;
+padding:10px 20px;
+border-radius:20px;
+width:300px;
+border:none;
+color:white;
+}
+
+/* HAMBURGER */
+
+.hamburger{
+display:none;
+font-size:22px;
+cursor:pointer;
+}
+
+/* CONTENT */
+
+.content{
+padding:40px;
+}
+
+/* FILE CARDS */
+
+.file-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-bottom:40px;
+}
+
+.file-card{
+background:#151922;
+border:1px solid #1f2630;
+padding:20px;
+border-radius:12px;
+transition:.3s;
+}
+
+.file-card:hover{
+transform:translateY(-5px);
+box-shadow:0 10px 20px rgba(0,0,0,0.5);
+}
+
+.file-card i{
+font-size:28px;
+color:#22d3ee;
+margin-bottom:10px;
+}
+
+/* CHART */
+
+.chart-box{
+background:#151922;
+padding:25px;
+border-radius:12px;
+border:1px solid #1f2630;
+margin-bottom:40px;
+height:320px;
+}
+
+.chart-box canvas{
+width:100%!important;
+height:100%!important;
+}
+
+/* TABLE */
+
+.record-table{
+width:100%;
+border-collapse:collapse;
+background:#151922;
+border-radius:10px;
+overflow:hidden;
+}
+
+.record-table th{
+background:#1e2430;
+padding:14px;
+text-align:left;
+}
+
+.record-table td{
+padding:14px;
+border-top:1px solid #1f2630;
+}
+
+button{
+background:#22d3ee;
+border:none;
+padding:7px 12px;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0ea5b7;
+}
+
+/* OVERLAY */
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(6px);
+opacity:0;
+pointer-events:none;
+transition:.3s;
+z-index:900;
+}
+
+.overlay.active{
+opacity:1;
+pointer-events:auto;
+}
+
+/* TABLET */
+
+@media(max-width:900px){
+
+.sidebar{
+left:-260px;
+}
+
+.sidebar.active{
+left:0;
+}
+
+.hamburger{
+display:block;
+}
+
+.main{
+margin-left:0;
+}
+
+.search{
+width:180px;
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.search{
+display:none;
+}
+
+.content{
+padding:25px;
+}
+
+.record-table{
+display:block;
+overflow-x:auto;
+white-space:nowrap;
+}
+
+button{
+width:100%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<div class="logo">Stackly</div>
+
+<div class="menu">
+
+<a href="patientdashboard.html"><i class="fa fa-home"></i> Dashboard</a>
+<a href="profile.html"><i class="fa fa-user"></i> My Profile</a>
+<a href="labtest.html"><i class="fa fa-vial"></i> Lab Tests</a>
+<a href="aianalysis.html"><i class="fa fa-brain"></i> AI Analysis</a>
+<a href="geneticreports.html"><i class="fa fa-dna"></i> Genetic Reports</a>
+<a href="medicalrecords.html"><i class="fa fa-file-medical"></i> Medical Records</a>
+<a href="login.html"><i class="fa fa-arrow-left"></i> Back</a>
+
+</div>
+
+</div>
+
+<div class="overlay" onclick="closeMenu()"></div>
+
+<div class="main">
+
+<div class="topbar">
+
+<div class="hamburger" onclick="toggleMenu()">
+<i class="fa fa-bars"></i>
+</div>
+
+<input class="search" placeholder="Search medical records">
+
+<div>
+<i class="fa fa-bell"></i>
+&nbsp;&nbsp; Patient Name
+</div>
+
+</div>
+
+<div class="content">
+
+<h1>Medical Records</h1>
+
+<div class="file-grid">
+
+<div class="file-card">
+<i class="fa fa-file-medical"></i>
+<h3>Blood Report</h3>
+<p>Uploaded: March 2026</p>
+<button>Download</button>
+</div>
+
+<div class="file-card">
+<i class="fa fa-heartbeat"></i>
+<h3>Heart Checkup</h3>
+<p>Uploaded: Feb 2026</p>
+<button>Download</button>
+</div>
+
+<div class="file-card">
+<i class="fa fa-dna"></i>
+<h3>DNA Report</h3>
+<p>Uploaded: Jan 2026</p>
+<button>Download</button>
+</div>
+
+</div>
+
+<div class="chart-box">
+
+<h3>Health Record History</h3>
+
+<canvas id="healthChart"></canvas>
+
+</div>
+
+<h2>Recent Medical Visits</h2>
+
+<table class="record-table">
+
+<tr>
+<th>Date</th>
+<th>Doctor</th>
+<th>Department</th>
+<th>Report</th>
+</tr>
+
+<tr>
+<td>12 Mar 2026</td>
+<td>Dr. Smith</td>
+<td>Cardiology</td>
+<td><button>View</button></td>
+</tr>
+
+<tr>
+<td>02 Feb 2026</td>
+<td>Dr. John</td>
+<td>Neurology</td>
+<td><button>View</button></td>
+</tr>
+
+<tr>
+<td>15 Jan 2026</td>
+<td>Dr. Anna</td>
+<td>Genetics</td>
+<td><button>View</button></td>
+</tr>
+
+</table>
+
+</div>
+
+</div>
+
+<script>
+
+const sidebar=document.querySelector(".sidebar");
+const overlay=document.querySelector(".overlay");
+
+function toggleMenu(){
+sidebar.classList.toggle("active");
+overlay.classList.toggle("active");
+}
+
+function closeMenu(){
+sidebar.classList.remove("active");
+overlay.classList.remove("active");
+}
+
+new Chart(document.getElementById("healthChart"),{
+
+type:"line",
+
+data:{
+labels:["Jan","Feb","Mar","Apr","May"],
+datasets:[{
+data:[70,75,72,80,82],
+borderColor:"#22d3ee",
+backgroundColor:"rgba(34,211,238,0.2)",
+fill:true,
+tension:.4
+}]
+},
+
+options:{
+responsive:true,
+maintainAspectRatio:false,
+plugins:{legend:{display:false}}
+}
+
+});
+
+</script>
+
+</body>
+</html>

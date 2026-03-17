@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Stackly Premium Header</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+height:200vh;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+}
+
+/* HEADER */
+
+header{
+
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+
+width:92%;
+max-width:1250px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:14px 28px;
+
+border-radius:18px;
+
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,0.18);
+
+z-index:1000;
+
+overflow:hidden;
+
+}
+
+/* animated gradient border */
+
+header::before{
+
+content:"";
+
+position:absolute;
+inset:-2px;
+
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.6),
+transparent
+);
+
+opacity:.4;
+
+animation:borderGlow 6s linear infinite;
+
+}
+
+@keyframes borderGlow{
+
+0%{transform:translateX(-100%)}
+100%{transform:translateX(100%)}
+
+}
+
+/* LOGO */
+
+.logo{
+color:white;
+font-size:26px;
+font-weight:700;
+letter-spacing:0.8px;
+z-index:2;
+}
+
+/* NAV */
+
+nav{
+
+display:flex;
+gap:32px;
+z-index:2;
+
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:17px;
+opacity:.9;
+font-weight:500;
+
+position:relative;
+
+transition:0.3s;
+
+}
+
+/* hover underline */
+
+nav a::after{
+
+content:"";
+
+position:absolute;
+bottom:-5px;
+left:0;
+
+width:0%;
+height:2px;
+
+background:white;
+
+transition:0.3s;
+
+}
+
+nav a:hover::after{
+
+width:100%;
+
+}
+
+nav a:hover{
+
+opacity:1;
+transform:translateY(-2px);
+
+}
+
+/* RIGHT SIDE */
+
+.right{
+
+display:flex;
+align-items:center;
+gap:18px;
+z-index:2;
+
+}
+
+.login{
+color:white;
+text-decoration:none;
+font-size:16px;
+opacity:.9;
+font-weight:500;
+}
+
+/* signup button */
+
+.signup{
+padding:10px 22px;
+border-radius:30px;
+
+background:rgba(255,255,255,0.12);
+color:white;
+
+border:1px solid rgba(255,255,255,0.35);
+
+text-decoration:none;
+font-size:16px;
+font-weight:600;
+
+backdrop-filter:blur(10px);
+
+transition:all 0.3s ease;
+}
+
+/* hover effect */
+
+.signup:hover{
+
+background:rgba(255,255,255,0.25);
+
+transform:translateY(-2px);
+
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+
+}
+/* HAMBURGER */
+
+.hamburger{
+
+display:none;
+
+width:28px;
+height:20px;
+
+flex-direction:column;
+justify-content:space-between;
+
+cursor:pointer;
+
+z-index:1001;
+
+}
+
+.hamburger span{
+
+height:3px;
+width:100%;
+
+background:white;
+
+border-radius:3px;
+
+transition:.4s;
+
+}
+
+/* HAMBURGER ANIMATION */
+
+.hamburger.active span:nth-child(1){
+
+transform:rotate(45deg) translateY(8px);
+
+}
+
+.hamburger.active span:nth-child(2){
+
+opacity:0;
+
+}
+
+.hamburger.active span:nth-child(3){
+
+transform:rotate(-45deg) translateY(-8px);
+
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(10,20,30,.96);
+
+backdrop-filter:blur(20px);
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+gap:35px;
+
+opacity:0;
+pointer-events:none;
+
+transition:.5s;
+
+z-index:999;
+
+}
+
+.mobile-menu.active{
+
+opacity:1;
+pointer-events:auto;
+
+}
+
+/* MENU LINKS */
+
+.mobile-menu a{
+color:white;
+font-size:36px;
+font-weight:600;
+text-decoration:none;
+opacity:0;
+transform:translateY(40px);
+animation:menuAnim .6s forwards;
+
+transform:translateY(40px);
+
+animation:menuAnim .6s forwards;
+
+}       
+.mobile-menu.active a:nth-child(1){animation-delay:.1s}
+.mobile-menu.active a:nth-child(2){animation-delay:.2s}
+.mobile-menu.active a:nth-child(3){animation-delay:.3s}
+.mobile-menu.active a:nth-child(4){animation-delay:.4s}
+.mobile-menu.active a:nth-child(5){animation-delay:.5s}
+.mobile-menu.active a:nth-child(6){animation-delay:.6s}
+.mobile-menu.active a:nth-child(7){animation-delay:.7s}
+
+@keyframes menuAnim{
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+.logo img{
+height:36px;
+width:auto;
+filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+}
+/* MOBILE */
+
+@media(max-width:900px){
+
+nav{
+display:none;
+}
+
+.right{
+display:none;
+}
+
+.hamburger{
+display:flex;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+    <img src="logo.webp" alt="Stackly Logo">
+</div>
+
+<nav>
+<a href="home.html">HOME</a>
+<a href="about.html">ABOUT</a>
+<a href="blog.html">BLOG</a>
+<a href="careers.html">CAREERS</a>
+<a href="contact.html">CONTACT US</a>
+</nav>
+
+<div class="right">
+<a href="login.html" class="login">Log in</a>
+<a href="signup.html" class="signup">Sign up for free</a>
+</div>
+
+<div class="hamburger" id="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+
+<a href="home.html">HOME</a>
+<a href="about.html">ABOUT</a>
+<a href="blog.html">BLOG</a>
+<a href="careers.html">CAREERS</a>
+<a href="contact.html">CONTACT US</a>
+<a href="login.html">LOG IN</a>
+<a href="signup.html">SIGN UP</a>
+
+</div>
+
+<script>
+
+const hamburger=document.getElementById("hamburger");
+const menu=document.getElementById("mobileMenu");
+
+hamburger.onclick=()=>{
+
+hamburger.classList.toggle("active");
+menu.classList.toggle("active");
+
+}
+
+</script>
+
+
+<section class="about-hero">
+
+<div class="about-overlay"></div>
+
+<div class="about-content">
+
+<h1>OUR BLOG</h1>
+
+<div class="breadcrumb">
+<a href="index.html">Home</a>
+<span>›</span>
+<span>OUR BLOG</span>
+</div>
+
+</div>
+
+</section>
+<style>
+    .about-hero{
+position:relative;
+height:520px; /* bigger height */
+background:url("about.webp") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+font-family:Poppins, sans-serif;
+overflow:hidden;
+}
+
+.about-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(
+rgba(10,35,70,.8),
+rgba(10,35,70,.8)
+);
+}
+
+.about-content{
+position:relative;
+color:white;
+z-index:2;
+}
+
+.about-content h1{
+font-size:64px;
+margin-bottom:15px;
+font-weight:600;
+}
+
+.breadcrumb{
+display:flex;
+justify-content:center;
+gap:10px;
+font-size:14px;
+letter-spacing:1px;
+}
+
+.breadcrumb a{
+color:#22d3ee;
+text-decoration:none;
+}
+
+.breadcrumb span{
+color:#cbd5e1;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.about-hero{
+height:360px;
+}
+
+.about-content h1{
+font-size:40px;
+}
+
+}
+</style>
+<script>
+
+const fadeElements = document.querySelectorAll(".fade-up");
+
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+},{threshold:0.3});
+
+fadeElements.forEach(el=>{
+observer.observe(el);
+});
+
+</script>
+
+<section class="blog-page">
+
+<div class="blog-wrapper">
+
+<!-- BLOG POSTS -->
+<div class="blog-main">
+
+<!-- POST 1 -->
+<article class="blog-post slide-card">
+<div class="blog-img">
+<img src="re1.webp">
+</div>
+
+<div class="blog-content">
+<div class="meta">
+<span>ADMIN</span>
+<span>DECEMBER 19, 2023</span>
+<span>0 COMMENTS</span>
+<span>BIOCHEMISTRY</span>
+</div>
+
+<h2>How To Select An At-Home Sleep Apnea Test</h2>
+
+<p>
+Morbi porta dolor quis sem ultrices maximus. Nunc accumsan vel eu
+lobortis pulvinar. Duis convallis odio ut dignissim mollis.
+</p>
+</div>
+</article>
+
+
+<!-- POST 2 -->
+<article class="blog-post slide-card">
+
+<div class="blog-img">
+<img src="re2.webp">
+</div>
+
+<div class="blog-content">
+
+<div class="meta">
+<span>ADMIN</span>
+<span>DECEMBER 19, 2023</span>
+<span>0 COMMENTS</span>
+<span>BIOCHEMISTRY</span>
+</div>
+
+<h2>Funds To Boost Supply Of Rapid COVID-19 Tests</h2>
+
+<p>
+Morbi porta dolor quis sem ultrices maximus. Nunc accumsan vel eu
+lobortis pulvinar. Duis convallis odio ut dignissim mollis.
+</p>
+
+</div>
+</article>
+
+
+<!-- POST 3 -->
+<article class="blog-post slide-card">
+
+<div class="blog-img">
+<img src="re3.webp">
+</div>
+
+<div class="blog-content">
+
+<div class="meta">
+<span>ADMIN</span>
+<span>DECEMBER 19, 2023</span>
+<span>0 COMMENTS</span>
+<span>CHEMISTRY</span>
+</div>
+
+<h2>People Screened With Faulty Lead Tests Need</h2>
+
+<p>
+Morbi porta dolor quis sem ultrices maximus. Nunc accumsan vel eu
+lobortis pulvinar. Duis convallis odio ut dignissim mollis.
+</p>
+
+</div>
+</article>
+
+
+<!-- POST 4 -->
+<article class="blog-post slide-card">
+
+<div class="blog-img">
+<img src="teast2.webp">
+</div>
+
+<div class="blog-content">
+
+<div class="meta">
+<span>ADMIN</span>
+<span>DECEMBER 19, 2023</span>
+<span>0 COMMENTS</span>
+<span>ONCOLOGY</span>
+</div>
+
+<h2>Drug Overdose Data Reveal Troubling Trends</h2>
+
+<p>
+Morbi porta dolor quis sem ultrices maximus. Nunc accumsan vel eu
+lobortis pulvinar. Duis convallis odio ut dignissim mollis.
+</p>
+
+</div>
+</article>
+
+
+<!-- POST 5 -->
+<article class="blog-post slide-card">
+
+<div class="blog-img">
+<img src="test1.webp">
+</div>
+
+<div class="blog-content">
+
+<div class="meta">
+<span>ADMIN</span>
+<span>DECEMBER 19, 2023</span>
+<span>0 COMMENTS</span>
+<span>PATHOLOGY</span>
+</div>
+
+<h2>Blood Supply Safe Despite COVID-19 Pandemic</h2>
+
+<p>
+Morbi porta dolor quis sem ultrices maximus. Nunc accumsan vel eu
+lobortis pulvinar. Duis convallis odio ut dignissim mollis.
+</p>
+
+</div>
+</article>
+
+</div>
+
+
+<!-- SIDEBAR -->
+
+<aside class="blog-sidebar">
+
+<div class="sidebar-card">
+
+<h3>Search</h3>
+
+<div class="search-box">
+<input type="text" placeholder="Search Here">
+<button>🔍</button>
+</div>
+
+</div>
+
+
+<div class="sidebar-card">
+
+<h3>Categories</h3>
+
+<ul>
+<li>Biochemistry (1)</li>
+<li>Bioenergy (1)</li>
+<li>Chemistry (1)</li>
+<li>Oncology (1)</li>
+<li>Pathology (1)</li>
+</ul>
+
+</div>
+
+
+<div class="sidebar-card">
+
+<h3>Recent News</h3>
+
+<div class="recent-item">
+<img src="doc.webp">
+<p>How to Select an At-Home Sleep Apnea Test</p>
+</div>
+
+<div class="recent-item">
+<img src="feed1.webp">
+<p>Funds To Boost Supply Of Rapid COVID-19 Tests</p>
+</div>
+
+<div class="recent-item">
+<img src="feed2.webp">
+<p>People Screened With Faulty Lead Tests Need</p>
+</div>
+
+</div>
+
+
+<div class="help-card">
+
+<img src="doc.webp">
+
+<h4>How Can We Help?</h4>
+
+<p>Vestibulum morbi blandit cursus risus.</p>
+
+<a href="contact.html">CONTACT US</a>
+
+</div>
+
+
+<div class="sidebar-card">
+
+<h3>Popular Tags</h3>
+
+<div class="tags">
+<span>Biochemistry</span>
+<span>Chemistry</span>
+<span>Oncology</span>
+<span>Analysis</span>
+</div>
+
+</div>
+
+</aside>
+
+</div>
+
+</section>
+<style>
+    .blog-page{
+padding:120px 6%;
+background:#071531;
+font-family:Poppins,sans-serif;
+}
+
+.blog-wrapper{
+max-width:1400px;
+margin:auto;
+display:grid;
+grid-template-columns:2fr 1fr;
+gap:40px;
+}
+
+/* BLOG POST */
+
+.blog-post{
+background:white;
+border-radius:18px;
+overflow:hidden;
+margin-bottom:40px;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+
+opacity:0;
+transform:translateX(120px);
+transition:all .8s ease;
+}
+
+.blog-post.show{
+opacity:1;
+transform:translateX(0);
+}
+
+/* IMAGE FIT */
+
+.blog-img{
+width:100%;
+height:420px;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+background:#f1f5f9;
+}
+
+.blog-img img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+/* CONTENT */
+
+.blog-content{
+padding:30px;
+}
+
+.meta{
+display:flex;
+gap:15px;
+font-size:12px;
+color:#64748b;
+margin-bottom:10px;
+}
+
+.blog-content h2{
+font-size:28px;
+margin-bottom:10px;
+color:#1e3a5f;
+}
+
+.blog-content p{
+color:#64748b;
+line-height:1.6;
+}
+
+/* SIDEBAR */
+
+.blog-sidebar{
+display:flex;
+flex-direction:column;
+gap:25px;
+}
+
+.sidebar-card{
+background:white;
+padding:25px;
+border-radius:14px;
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+}
+
+.sidebar-card h3{
+margin-bottom:15px;
+}
+
+.sidebar-card ul{
+list-style:none;
+padding:0;
+}
+
+.sidebar-card li{
+padding:8px 0;
+border-bottom:1px solid #eee;
+}
+
+/* SEARCH */
+
+.search-box{
+display:flex;
+}
+
+.search-box input{
+flex:1;
+padding:10px;
+border:1px solid #ddd;
+border-radius:6px 0 0 6px;
+}
+
+.search-box button{
+padding:10px 15px;
+border:none;
+background:#14b8a6;
+color:white;
+border-radius:0 6px 6px 0;
+}
+
+/* RECENT */
+
+.recent-item{
+display:flex;
+gap:10px;
+margin-bottom:12px;
+}
+
+.recent-item img{
+width:60px;
+height:60px;
+object-fit:cover;
+border-radius:8px;
+}
+
+/* HELP */
+
+.help-card{
+background:#1e3a5f;
+color:white;
+text-align:center;
+padding:35px 20px;
+border-radius:15px;
+}
+
+.help-card img{
+width:90px;
+margin-bottom:10px;
+}
+
+.help-card a{
+display:inline-block;
+margin-top:15px;
+background:#14b8a6;
+padding:10px 20px;
+border-radius:25px;
+color:white;
+text-decoration:none;
+}
+
+/* TAGS */
+
+.tags{
+display:flex;
+flex-wrap:wrap;
+gap:8px;
+}
+
+.tags span{
+background:#eef2f7;
+padding:6px 12px;
+border-radius:20px;
+font-size:12px;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.blog-wrapper{
+grid-template-columns:1fr;
+}
+
+.blog-img{
+height:260px;
+}
+
+}
+</style>
+<script>
+
+const cards = document.querySelectorAll(".slide-card");
+
+function reveal(){
+
+const trigger = window.innerHeight * 0.85;
+
+cards.forEach(card => {
+
+const top = card.getBoundingClientRect().top;
+
+if(top < trigger){
+card.classList.add("show");
+}
+
+});
+
+}
+
+window.addEventListener("scroll", reveal);
+reveal();
+
+</script>
+
+<footer class="site-footer">
+
+<div class="footer-container">
+
+<!-- COLUMN 1 -->
+<div class="footer-col">
+<h3>Stackly</h3>
+<p>
+Limitless marathons. Lightning sports.  
+Studios built for superfans.
+</p>
+</div>
+
+
+<!-- COLUMN 2 -->
+<div class="footer-col">
+<h3>Quick Links</h3>
+<ul>
+<li><a href="home.html">Home</a></li>
+<li><a href="about.html">ABOUT</a></li>
+<li><a href="blog.html">BLOG</a></li>
+<li><a href="careers.html">CAREERS</a></li>
+<li><a href="contact.html">CONTACT</a></li>
+<li><a href="login.html">LOGIN</a></li>
+</ul>
+</div>
+
+
+<!-- COLUMN 3 -->
+<div class="footer-col">
+<h3>Contact Us</h3>
+<ul>
+<li>support@stackly.tv</li>
+<li>+1 800 123 4567</li>
+<li>Bangalore, India</li>
+<li><a href="404.html">Partner with us</a></li>
+<li><a href="404.html">Press & updates</a></li>
+</ul>
+</div>
+
+
+<!-- COLUMN 4 -->
+<div class="footer-col">
+<h3>Follow Us</h3>
+
+<div class="social-icons">
+
+<a href="404.html"><i class="fab fa-instagram"></i></a>
+<a href="404.html"><i class="fab fa-youtube"></i></a>
+<a href="404.html"><i class="fab fa-twitter"></i></a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 Stackly. Built for marathoners.</p>
+</div>
+
+</footer>
+<style>
+    .site-footer{
+background:#0b0c1a;
+color:#cbd5e1;
+padding:80px 8% 30px;
+font-family:Poppins, sans-serif;
+}
+
+.footer-container{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:40px;
+margin-bottom:40px;
+}
+
+.footer-col h3{
+color:white;
+margin-bottom:20px;
+}
+
+.footer-col p{
+line-height:1.6;
+}
+
+.footer-col ul{
+list-style:none;
+padding:0;
+}
+
+.footer-col ul li{
+margin-bottom:10px;
+}
+
+.footer-col ul li a{
+text-decoration:none;
+color:#cbd5e1;
+transition:.3s;
+}
+
+.footer-col ul li a:hover{
+color:#14b8a6;
+}
+
+/* SOCIAL ICONS */
+
+.social-icons{
+display:flex;
+gap:15px;
+margin-top:10px;
+}
+
+.social-icons a{
+width:45px;
+height:45px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#111827;
+border-radius:10px;
+color:white;
+font-size:18px;
+transition:.3s;
+}
+
+.social-icons a:hover{
+background:#14b8a6;
+}
+
+/* BOTTOM */
+
+.footer-bottom{
+border-top:1px solid rgba(255,255,255,.1);
+padding-top:20px;
+text-align:left;
+font-size:14px;
+color:#94a3b8;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.footer-container{
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+}
+
+@media(max-width:600px){
+
+.footer-container{
+grid-template-columns:1fr;
+}
+
+}
+</style>

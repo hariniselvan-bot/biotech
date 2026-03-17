@@ -1,0 +1,1649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Stackly Premium Header</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+height:200vh;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+}
+
+/* HEADER */
+
+header{
+
+position:fixed;
+top:20px;
+left:50%;
+transform:translateX(-50%);
+
+width:92%;
+max-width:1250px;
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+padding:14px 28px;
+
+border-radius:18px;
+
+background:rgba(255,255,255,0.08);
+
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+
+border:1px solid rgba(255,255,255,0.18);
+
+z-index:1000;
+
+overflow:hidden;
+
+}
+
+/* animated gradient border */
+
+header::before{
+
+content:"";
+
+position:absolute;
+inset:-2px;
+
+background:linear-gradient(
+120deg,
+transparent,
+rgba(255,255,255,0.6),
+transparent
+);
+
+opacity:.4;
+
+animation:borderGlow 6s linear infinite;
+
+}
+
+@keyframes borderGlow{
+
+0%{transform:translateX(-100%)}
+100%{transform:translateX(100%)}
+
+}
+
+/* LOGO */
+
+.logo{
+color:white;
+font-size:26px;
+font-weight:700;
+letter-spacing:0.8px;
+z-index:2;
+}
+
+/* NAV */
+
+nav{
+
+display:flex;
+gap:32px;
+z-index:2;
+
+}
+
+nav a{
+color:white;
+text-decoration:none;
+font-size:17px;
+opacity:.9;
+font-weight:500;
+
+position:relative;
+
+transition:0.3s;
+
+}
+
+/* hover underline */
+
+nav a::after{
+
+content:"";
+
+position:absolute;
+bottom:-5px;
+left:0;
+
+width:0%;
+height:2px;
+
+background:white;
+
+transition:0.3s;
+
+}
+
+nav a:hover::after{
+
+width:100%;
+
+}
+
+nav a:hover{
+
+opacity:1;
+transform:translateY(-2px);
+
+}
+
+/* RIGHT SIDE */
+
+.right{
+
+display:flex;
+align-items:center;
+gap:18px;
+z-index:2;
+
+}
+
+.login{
+color:white;
+text-decoration:none;
+font-size:16px;
+opacity:.9;
+font-weight:500;
+}
+
+/* signup button */
+
+.signup{
+padding:10px 22px;
+border-radius:30px;
+
+background:rgba(255,255,255,0.12);
+color:white;
+
+border:1px solid rgba(255,255,255,0.35);
+
+text-decoration:none;
+font-size:16px;
+font-weight:600;
+
+backdrop-filter:blur(10px);
+
+transition:all 0.3s ease;
+}
+
+/* hover effect */
+
+.signup:hover{
+
+background:rgba(255,255,255,0.25);
+
+transform:translateY(-2px);
+
+box-shadow:0 8px 20px rgba(0,0,0,0.25);
+
+}
+/* HAMBURGER */
+
+.hamburger{
+
+display:none;
+
+width:28px;
+height:20px;
+
+flex-direction:column;
+justify-content:space-between;
+
+cursor:pointer;
+
+z-index:1001;
+
+}
+
+.hamburger span{
+
+height:3px;
+width:100%;
+
+background:white;
+
+border-radius:3px;
+
+transition:.4s;
+
+}
+
+/* HAMBURGER ANIMATION */
+
+.hamburger.active span:nth-child(1){
+
+transform:rotate(45deg) translateY(8px);
+
+}
+
+.hamburger.active span:nth-child(2){
+
+opacity:0;
+
+}
+
+.hamburger.active span:nth-child(3){
+
+transform:rotate(-45deg) translateY(-8px);
+
+}
+
+/* MOBILE MENU */
+
+.mobile-menu{
+
+position:fixed;
+top:0;
+left:0;
+
+width:100%;
+height:100%;
+
+background:rgba(10,20,30,.96);
+
+backdrop-filter:blur(20px);
+
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+
+gap:35px;
+
+opacity:0;
+pointer-events:none;
+
+transition:.5s;
+
+z-index:999;
+
+}
+
+.mobile-menu.active{
+
+opacity:1;
+pointer-events:auto;
+
+}
+
+/* MENU LINKS */
+
+.mobile-menu a{
+color:white;
+font-size:36px;
+font-weight:600;
+text-decoration:none;
+opacity:0;
+transform:translateY(40px);
+animation:menuAnim .6s forwards;
+
+transform:translateY(40px);
+
+animation:menuAnim .6s forwards;
+
+}       
+.mobile-menu.active a:nth-child(1){animation-delay:.1s}
+.mobile-menu.active a:nth-child(2){animation-delay:.2s}
+.mobile-menu.active a:nth-child(3){animation-delay:.3s}
+.mobile-menu.active a:nth-child(4){animation-delay:.4s}
+.mobile-menu.active a:nth-child(5){animation-delay:.5s}
+.mobile-menu.active a:nth-child(6){animation-delay:.6s}
+.mobile-menu.active a:nth-child(7){animation-delay:.7s}
+
+@keyframes menuAnim{
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+.logo img{
+height:36px;
+width:auto;
+filter:drop-shadow(0 2px 6px rgba(0,0,0,0.4));
+}
+/* MOBILE */
+
+@media(max-width:900px){
+
+nav{
+display:none;
+}
+
+.right{
+display:none;
+}
+
+.hamburger{
+display:flex;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+    <img src="logo.webp" alt="Stackly Logo">
+</div>
+
+<nav>
+<a href="home.html">HOME</a>
+<a href="about.html">ABOUT</a>
+<a href="blog.html">BLOG</a>
+<a href="careers.html">CAREERS</a>
+<a href="contact.html">CONTACT US</a>
+</nav>
+
+<div class="right">
+<a href="login.html" class="login">Log in</a>
+<a href="signup.html" class="signup">Sign up for free</a>
+</div>
+
+<div class="hamburger" id="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</div>
+
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+
+<a href="home.html">HOME</a>
+<a href="about.html">ABOUT</a>
+<a href="blog.html">BLOG</a>
+<a href="careers.html">CAREERS</a>
+<a href="contact.html">CONTACT US</a>
+<a href="login.html">LOG IN</a>
+<a href="signup.html">SIGN UP</a>
+
+</div>
+
+<script>
+
+const hamburger=document.getElementById("hamburger");
+const menu=document.getElementById("mobileMenu");
+
+hamburger.onclick=()=>{
+
+hamburger.classList.toggle("active");
+menu.classList.toggle("active");
+
+}
+
+</script>
+
+
+<section class="about-hero">
+
+<div class="about-overlay"></div>
+
+<div class="about-content">
+
+<h1>About Us</h1>
+
+<div class="breadcrumb">
+<a href="index.html">Home</a>
+<span>›</span>
+<span>About Us</span>
+</div>
+
+</div>
+
+</section>
+<style>
+    .about-hero{
+position:relative;
+height:520px; /* bigger height */
+background:url("about.webp") center/cover no-repeat;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+font-family:Poppins, sans-serif;
+overflow:hidden;
+}
+
+.about-overlay{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:linear-gradient(
+rgba(10,35,70,.8),
+rgba(10,35,70,.8)
+);
+}
+
+.about-content{
+position:relative;
+color:white;
+z-index:2;
+}
+
+.about-content h1{
+font-size:64px;
+margin-bottom:15px;
+font-weight:600;
+}
+
+.breadcrumb{
+display:flex;
+justify-content:center;
+gap:10px;
+font-size:14px;
+letter-spacing:1px;
+}
+
+.breadcrumb a{
+color:#22d3ee;
+text-decoration:none;
+}
+
+.breadcrumb span{
+color:#cbd5e1;
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.about-hero{
+height:360px;
+}
+
+.about-content h1{
+font-size:40px;
+}
+
+}
+</style>
+<script>
+
+const fadeElements = document.querySelectorAll(".fade-up");
+
+const observer = new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+},{threshold:0.3});
+
+fadeElements.forEach(el=>{
+observer.observe(el);
+});
+
+</script>
+
+<section class="about-dark">
+
+<div class="about-dark-container">
+
+<!-- IMAGE -->
+<div class="about-dark-image fade-up">
+<img src="doc.webp" alt="Lab Scientist">
+</div>
+
+
+<!-- CONTENT -->
+<div class="about-dark-content fade-up">
+
+<p class="about-tag">ABOUT US</p>
+
+<h2>Experiment With Best Lab Products</h2>
+
+<p class="about-text">
+Vestibulum morbi blandit cursus risus. Augue neque gravida in fermentum et
+sollicitudin ac orci phasellus. Massa massa ultricies mi quis hendrerit.
+</p>
+
+<div class="about-services">
+
+<div class="service-box">
+<div class="icon">🧬</div>
+<h4>Paternity Testing</h4>
+<p>Vestibulum morbi blandit cursus risus. Augue neque gravida.</p>
+</div>
+
+<div class="service-box">
+<div class="icon">🔬</div>
+<h4>Genetic Testing</h4>
+<p>Vestibulum morbi blandit cursus risus. Augue neque gravida.</p>
+</div>
+
+</div>
+
+<a href="contact.html" class="about-btn">CONTACT US</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<style>
+
+.about-dark{
+background:#0f172a;
+width:100%;
+padding:120px 5%;
+font-family:Poppins, sans-serif;
+color:white;
+}
+
+.about-dark-container{
+display:grid;
+grid-template-columns:1.1fr 1fr;
+gap:80px;
+align-items:center;
+max-width:1400px;
+margin:auto;
+}
+
+/* IMAGE */
+
+.about-dark-image img{
+width:100%;
+height:520px;
+object-fit:cover;
+border-radius:25px;
+}
+
+/* TEXT */
+
+.about-tag{
+color:#22d3ee;
+letter-spacing:2px;
+font-size:14px;
+margin-bottom:10px;
+}
+
+.about-dark-content h2{
+font-size:54px;
+margin-bottom:20px;
+line-height:1.2;
+}
+
+.about-text{
+color:#cbd5e1;
+line-height:1.6;
+margin-bottom:35px;
+max-width:520px;
+}
+
+/* SERVICES */
+
+.about-services{
+display:flex;
+gap:60px;
+margin-bottom:35px;
+}
+
+.service-box{
+max-width:220px;
+}
+
+.icon{
+width:60px;
+height:60px;
+background:#14b8a6;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:12px;
+font-size:28px;
+margin-bottom:15px;
+}
+
+.service-box h4{
+margin-bottom:10px;
+}
+
+.service-box p{
+color:#94a3b8;
+font-size:14px;
+}
+
+/* BUTTON */
+
+.about-btn{
+display:inline-block;
+background:#1e3a8a;
+padding:16px 36px;
+border-radius:30px;
+color:white;
+text-decoration:none;
+transition:.3s;
+}
+
+.about-btn:hover{
+background:#2563eb;
+}
+
+/* FADE ANIMATION */
+
+.fade-up{
+opacity:0;
+transform:translateY(40px);
+transition:all .8s ease;
+}
+
+.fade-up.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.about-dark-container{
+grid-template-columns:1fr;
+gap:50px;
+}
+
+.about-dark-image img{
+height:360px;
+}
+
+.about-dark-content h2{
+font-size:36px;
+}
+
+.about-services{
+flex-direction:column;
+}
+
+}
+
+</style>
+
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function(){
+
+const fadeElements = document.querySelectorAll(".fade-up");
+
+const observer = new IntersectionObserver((entries)=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+},{threshold:0.3});
+
+fadeElements.forEach(el=>{
+observer.observe(el);
+});
+
+});
+
+</script>
+
+<section class="service-fade-section">
+
+<div class="service-header">
+<p class="service-sub">OUR SERVICE</p>
+<h2>High Quality Test Services</h2>
+</div>
+
+
+<div class="service-grid">
+
+<!-- 1 -->
+<div class="service-row fade-item">
+<div class="service-left">
+
+<svg class="service-icon" viewBox="0 0 64 64">
+<path d="M12 50 L12 20 L26 20 L26 50"/>
+<path d="M38 50 L38 15 L52 15 L52 50"/>
+</svg>
+
+<span class="service-number">01</span>
+<h3>Diagnostic Testing</h3>
+
+</div>
+
+<a href="404.html" class="service-arrow">↗</a>
+</div>
+
+
+<!-- 2 -->
+<div class="service-row fade-item">
+<div class="service-left">
+
+<svg class="service-icon" viewBox="0 0 64 64">
+<circle cx="32" cy="32" r="10"/>
+<line x1="32" y1="10" x2="32" y2="20"/>
+</svg>
+
+<span class="service-number">03</span>
+<h3>Food Sensitivity</h3>
+
+</div>
+
+<a href="404.html" class="service-arrow">↗</a>
+</div>
+
+
+<!-- 3 -->
+<div class="service-row fade-item">
+<div class="service-left">
+
+<svg class="service-icon" viewBox="0 0 64 64">
+<circle cx="32" cy="32" r="12"/>
+<circle cx="20" cy="32" r="4"/>
+<circle cx="44" cy="32" r="4"/>
+</svg>
+
+<span class="service-number">04</span>
+<h3>Naturopathic Testing</h3>
+
+</div>
+
+<a href="404.html" class="service-arrow">↗</a>
+</div>
+
+
+<!-- 4 -->
+<div class="service-row fade-item">
+<div class="service-left">
+
+<svg class="service-icon" viewBox="0 0 64 64">
+<path d="M20 50 L32 15 L44 50"/>
+</svg>
+
+<span class="service-number">02</span>
+<h3>Biochemistry Tests</h3>
+
+</div>
+
+<a href="404.html" class="service-arrow">↗</a>
+</div>
+
+
+<!-- 5 -->
+<div class="service-row fade-item">
+<div class="service-left">
+
+<svg class="service-icon" viewBox="0 0 64 64">
+<rect x="20" y="20" width="24" height="28"/>
+<line x1="32" y1="20" x2="32" y2="10"/>
+</svg>
+
+<span class="service-number">05</span>
+<h3>Chemical Research</h3>
+
+</div>
+
+<a href="404.html" class="service-arrow">↗</a>
+</div>
+
+
+<!-- 6 -->
+<div class="service-row fade-item">
+<div class="service-left">
+
+<svg class="service-icon" viewBox="0 0 64 64">
+<rect x="20" y="20" width="24" height="30"/>
+</svg>
+
+<span class="service-number">06</span>
+<h3>Genetic Testing</h3>
+
+</div>
+
+<a href="404.html" class="service-arrow">↗</a>
+</div>
+
+</div>
+
+</section>
+<style>
+    .service-fade-section{
+padding:120px 8%;
+background:linear-gradient(135deg,#242e59,#13162c);
+color:white;
+font-family:Poppins,sans-serif;
+}
+
+.service-header{
+text-align:center;
+margin-bottom:80px;
+}
+
+.service-sub{
+letter-spacing:2px;
+font-size:13px;
+opacity:.9;
+}
+
+.service-header h2{
+font-size:48px;
+margin-top:10px;
+}
+
+.service-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:50px 80px;
+}
+
+.service-row{
+display:flex;
+align-items:center;
+justify-content:space-between;
+border-bottom:1px solid rgba(255,255,255,.3);
+padding-bottom:25px;
+
+opacity:0;
+transform:translateY(40px);
+transition:all .8s ease;
+}
+
+.service-row.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.service-left{
+display:flex;
+align-items:center;
+gap:20px;
+}
+
+.service-number{
+font-size:14px;
+opacity:.8;
+margin-right:10px;
+}
+
+.service-row h3{
+font-size:22px;
+font-weight:500;
+}
+
+/* ICON */
+
+.service-icon{
+width:55px;
+height:55px;
+stroke:white;
+stroke-width:2;
+fill:none;
+
+stroke-dasharray:200;
+stroke-dashoffset:200;
+transition:stroke-dashoffset 1s ease;
+}
+
+.service-row.show .service-icon{
+stroke-dashoffset:0;
+}
+
+/* ARROW */
+
+.service-arrow{
+font-size:24px;
+color:white;
+text-decoration:none;
+transition:.3s;
+}
+
+.service-arrow:hover{
+transform:translate(5px,-5px);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.service-grid{
+grid-template-columns:1fr;
+}
+
+.service-header h2{
+font-size:34px;
+}
+
+}
+</style><script>
+
+document.addEventListener("DOMContentLoaded", () => {
+
+const items = document.querySelectorAll(".service-row");
+
+function revealServices(){
+const trigger = window.innerHeight * 0.85;
+
+items.forEach(item => {
+
+const top = item.getBoundingClientRect().top;
+
+if(top < trigger){
+item.classList.add("show");
+}
+
+});
+
+}
+
+window.addEventListener("scroll", revealServices);
+revealServices();
+
+});
+
+</script>
+<section class="team-section">
+
+<div class="team-header">
+<p class="team-sub">OUR SPECIALIST</p>
+<h2>Meet our Scientists</h2>
+</div>
+
+<div class="team-container" id="teamSlider">
+
+<!-- CARD -->
+<div class="team-card">
+<div class="team-img">
+
+<img src="doc.webp" alt="Scientist">
+
+<div class="team-social">
+<a href="404.html"><i class="fa-brands fa-linkedin"></i></a>
+<a href="404.html"><i class="fa-solid fa-envelope"></i></a>
+</div>
+
+</div>
+
+<h3>Simon Amour</h3>
+<span>TECHNICAL DIRECTOR</span>
+</div>
+
+<!-- CARD -->
+<div class="team-card">
+<div class="team-img">
+
+<img src="feed1.webp" alt="Scientist">
+
+<div class="team-social">
+<a href="404.html"><i class="fa-brands fa-linkedin"></i></a>
+<a href="404.html"><i class="fa-solid fa-envelope"></i></a>
+</div>
+
+</div>
+
+<h3>Robbie Lee</h3>
+<span>FOUNDER DIRECTOR</span>
+</div>
+
+<!-- CARD -->
+<div class="team-card">
+<div class="team-img">
+
+<img src="feed2.webp" alt="Scientist">
+
+<div class="team-social">
+<a href="404.html"><i class="fa-brands fa-linkedin"></i></a>
+<a href="404.html"><i class="fa-solid fa-envelope"></i></a>
+</div>
+
+</div>
+
+<h3>Emma Aria</h3>
+<span>SENIOR TECHNICIAN</span>
+</div>
+
+<!-- CARD -->
+<div class="team-card">
+<div class="team-img">
+
+<img src="doc.webp" alt="Scientist">
+
+<div class="team-social">
+<a href="404.html"><i class="fa-brands fa-linkedin"></i></a>
+<a href="404.html"><i class="fa-solid fa-envelope"></i></a>
+</div>
+
+</div>
+
+<h3>Lopes Mads</h3>
+<span>GENETIC SPECIALIST</span>
+</div>
+
+</div>
+
+</section>
+<style>
+    .team-section{
+padding:120px 6%;
+background:#0f172a;
+font-family:Poppins,sans-serif;
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+.team-sub{
+color:#22d3ee;
+letter-spacing:2px;
+font-size:13px;
+margin-bottom:10px;
+}
+
+.team-header h2{
+font-size:48px;
+margin-bottom:70px;
+}
+
+.team-container{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:30px;
+max-width:1400px;
+margin:auto;
+}
+
+/* CARD */
+
+.team-card{
+opacity:0;
+transform:translateY(80px);
+transition:all .8s ease;
+text-align:left;
+}
+
+.team-card.show{
+opacity:1;
+transform:translateY(0);
+}
+
+/* IMAGE */
+
+.team-img{
+position:relative;
+overflow:hidden;
+border-radius:20px;
+}
+
+.team-img img{
+width:100%;
+height:300px;
+object-fit:cover;
+border-radius:20px;
+transition:.4s;
+}
+
+.team-img:hover img{
+transform:scale(1.1);
+}
+
+/* SOCIAL ICONS */
+
+.team-social{
+position:absolute;
+bottom:-60px;
+left:0;
+width:100%;
+display:flex;
+justify-content:center;
+gap:15px;
+transition:.4s;
+}
+
+.team-img:hover .team-social{
+bottom:20px;
+}
+
+.team-social a{
+width:40px;
+height:40px;
+background:#14b8a6;
+color:white;
+display:flex;
+align-items:center;
+justify-content:center;
+border-radius:50%;
+text-decoration:none;
+transition:.3s;
+}
+
+.team-social a:hover{
+transform:scale(1.2);
+}
+
+/* TEXT */
+
+.team-card h3{
+margin-top:15px;
+font-size:20px;
+}
+
+.team-card span{
+font-size:12px;
+color:#94a3b8;
+letter-spacing:1px;
+}
+
+/* TABLET */
+
+@media(max-width:1000px){
+
+.team-container{
+grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+/* MOBILE CAROUSEL */
+
+@media(max-width:600px){
+
+.team-container{
+display:flex;
+overflow:hidden;
+}
+
+.team-card{
+min-width:80%;
+margin-right:20px;
+}
+
+}
+</style>
+<script>
+
+/* slide from bottom one-by-one */
+
+const teamCards=document.querySelectorAll(".team-card");
+
+function revealTeam(){
+
+const trigger=window.innerHeight*0.85;
+
+teamCards.forEach((card,index)=>{
+
+const top=card.getBoundingClientRect().top;
+
+if(top<trigger){
+
+setTimeout(()=>{
+card.classList.add("show");
+},index*200);
+
+}
+
+});
+
+}
+
+window.addEventListener("scroll",revealTeam);
+revealTeam();
+
+
+/* MOBILE AUTO SLIDER */
+
+const slider=document.getElementById("teamSlider");
+
+let scrollAmount=0;
+
+function autoSlide(){
+
+if(window.innerWidth<600){
+
+scrollAmount+=320;
+
+if(scrollAmount>slider.scrollWidth){
+scrollAmount=0;
+}
+
+slider.scrollTo({
+left:scrollAmount,
+behavior:"smooth"
+});
+
+}
+
+}
+
+setInterval(autoSlide,3000);
+
+</script>
+
+
+<section class="testimonial-section">
+
+<div class="testimonial-box">
+
+<button class="nav prev">&#10094;</button>
+
+<div class="testimonial-slider">
+
+<!-- TESTIMONIAL 1 -->
+<div class="testimonial active">
+<div class="stars">★★★★★</div>
+
+<p>
+Vestibulum morbi blandit cursus risus. Augue neque gravida in fermentum et
+sollicitudin ac orci phasellus. Massa massa ultricies mi quis hendrerit
+Vestibulum morbi blandit cursus risus.
+</p>
+
+<div class="author">
+<img src="feed1.webp">
+<div>
+<h4>Simon Amour</h4>
+<span>TECHNICAL DIRECTOR</span>
+</div>
+</div>
+</div>
+
+
+<!-- TESTIMONIAL 2 -->
+<div class="testimonial">
+<div class="stars">★★★★★</div>
+
+<p>
+Aliquam id diam maecenas ultricies mi eget mauris pharetra.
+Faucibus nisl tincidunt eget nullam non nisi est sit amet.
+</p>
+
+<div class="author">
+<img src="feed2.webp">
+<div>
+<h4>Emma Aria</h4>
+<span>SENIOR TECHNICIAN</span>
+</div>
+</div>
+</div>
+
+
+<!-- TESTIMONIAL 3 -->
+<div class="testimonial">
+<div class="stars">★★★★★</div>
+
+<p>
+Eu consequat ac felis donec et odio pellentesque diam volutpat
+commodo sed egestas egestas fringilla phasellus faucibus.
+</p>
+
+<div class="author">
+<img src="doc.webp">
+<div>
+<h4>Robbie Lee</h4>
+<span>FOUNDER DIRECTOR</span>
+</div>
+</div>
+</div>
+
+
+<!-- TESTIMONIAL 4 -->
+<div class="testimonial">
+<div class="stars">★★★★★</div>
+
+<p>
+Pellentesque elit ullamcorper dignissim cras tincidunt lobortis
+feugiat vivamus at augue eget arcu dictum varius.
+</p>
+
+<div class="author">
+<img src="user4.webp">
+<div>
+<h4>Lopes Mads</h4>
+<span>GENETIC SPECIALIST</span>
+</div>
+</div>
+</div>
+
+</div>
+
+<button class="nav next">&#10095;</button>
+
+</div>
+
+</section>
+<style>
+    .testimonial-section{
+padding:120px 8%;
+background:#384756;
+display:flex;
+justify-content:center;
+font-family:Poppins,sans-serif;
+}
+
+.testimonial-box{
+position:relative;
+background:rgb(20, 17, 41);
+border-radius:40px;
+padding:80px 120px;
+max-width:1100px;
+width:100%;
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+.testimonial{
+display:none;
+animation:fade .6s ease;
+}
+
+.testimonial.active{
+display:block;
+}
+
+.stars{
+color:#facc15;
+font-size:20px;
+margin-bottom:20px;
+}
+
+.testimonial p{
+font-size:20px;
+line-height:1.7;
+margin-bottom:40px;
+opacity:.95;
+}
+
+.author{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:15px;
+}
+
+.author img{
+width:60px;
+height:60px;
+border-radius:50%;
+object-fit:cover;
+}
+
+.author h4{
+margin:0;
+font-size:20px;
+}
+
+.author span{
+font-size:12px;
+color:#22d3ee;
+letter-spacing:1px;
+}
+
+/* ARROWS */
+
+.nav{
+position:absolute;
+top:50%;
+transform:translateY(-50%);
+background:rgba(255,255,255,.15);
+border:none;
+width:50px;
+height:50px;
+border-radius:50%;
+color:white;
+font-size:22px;
+cursor:pointer;
+}
+
+.prev{
+left:30px;
+}
+
+.next{
+right:30px;
+}
+
+.nav:hover{
+background:rgba(255,255,255,.3);
+}
+
+/* FADE */
+
+@keyframes fade{
+from{opacity:0}
+to{opacity:1}
+}
+
+/* MOBILE */
+
+@media(max-width:700px){
+
+.testimonial-box{
+padding:60px 40px;
+}
+
+.testimonial p{
+font-size:16px;
+}
+
+}
+</style>
+<script>
+
+let index = 0;
+
+const testimonials = document.querySelectorAll(".testimonial");
+
+function showTestimonial(i){
+
+testimonials.forEach(t => t.classList.remove("active"));
+
+testimonials[i].classList.add("active");
+
+}
+
+document.querySelector(".next").onclick = () => {
+index++;
+if(index >= testimonials.length) index = 0;
+showTestimonial(index);
+};
+
+document.querySelector(".prev").onclick = () => {
+index--;
+if(index < 0) index = testimonials.length-1;
+showTestimonial(index);
+};
+
+/* Auto scroll */
+
+setInterval(()=>{
+index++;
+if(index >= testimonials.length) index = 0;
+showTestimonial(index);
+},5000);
+
+</script>
+
+<footer class="site-footer">
+
+<div class="footer-container">
+
+<!-- COLUMN 1 -->
+<div class="footer-col">
+<h3>Stackly</h3>
+<p>
+Limitless marathons. Lightning sports.  
+Studios built for superfans.
+</p>
+</div>
+
+
+<!-- COLUMN 2 -->
+<div class="footer-col">
+<h3>Quick Links</h3>
+<ul>
+<li><a href="home.html">Home</a></li>
+<li><a href="about.html">ABOUT</a></li>
+<li><a href="blog.html">BLOG</a></li>
+<li><a href="careers.html">CAREERS</a></li>
+<li><a href="contact.html">CONTACT</a></li>
+<li><a href="login.html">LOGIN</a></li>
+</ul>
+</div>
+
+
+<!-- COLUMN 3 -->
+<div class="footer-col">
+<h3>Contact Us</h3>
+<ul>
+<li>support@stackly.tv</li>
+<li>+1 800 123 4567</li>
+<li>Bangalore, India</li>
+<li><a href="404.html">Partner with us</a></li>
+<li><a href="404.html">Press & updates</a></li>
+</ul>
+</div>
+
+
+<!-- COLUMN 4 -->
+<div class="footer-col">
+<h3>Follow Us</h3>
+
+<div class="social-icons">
+
+<a href="404.html"><i class="fab fa-instagram"></i></a>
+<a href="404.html"><i class="fab fa-youtube"></i></a>
+<a href="404.html"><i class="fab fa-twitter"></i></a>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="footer-bottom">
+<p>© 2026 Stackly. Built for marathoners.</p>
+</div>
+
+</footer>
+<style>
+    .site-footer{
+background:#0b0c1a;
+color:#cbd5e1;
+padding:80px 8% 30px;
+font-family:Poppins, sans-serif;
+}
+
+.footer-container{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:40px;
+margin-bottom:40px;
+}
+
+.footer-col h3{
+color:white;
+margin-bottom:20px;
+}
+
+.footer-col p{
+line-height:1.6;
+}
+
+.footer-col ul{
+list-style:none;
+padding:0;
+}
+
+.footer-col ul li{
+margin-bottom:10px;
+}
+
+.footer-col ul li a{
+text-decoration:none;
+color:#cbd5e1;
+transition:.3s;
+}
+
+.footer-col ul li a:hover{
+color:#14b8a6;
+}
+
+/* SOCIAL ICONS */
+
+.social-icons{
+display:flex;
+gap:15px;
+margin-top:10px;
+}
+
+.social-icons a{
+width:45px;
+height:45px;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#111827;
+border-radius:10px;
+color:white;
+font-size:18px;
+transition:.3s;
+}
+
+.social-icons a:hover{
+background:#14b8a6;
+}
+
+/* BOTTOM */
+
+.footer-bottom{
+border-top:1px solid rgba(255,255,255,.1);
+padding-top:20px;
+text-align:left;
+font-size:14px;
+color:#94a3b8;
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.footer-container{
+grid-template-columns:1fr 1fr;
+gap:30px;
+}
+
+}
+
+@media(max-width:600px){
+
+.footer-container{
+grid-template-columns:1fr;
+}
+
+}
+</style>

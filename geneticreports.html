@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Genetic Reports</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Poppins,sans-serif;
+}
+
+body{
+display:flex;
+background:linear-gradient(135deg,#0f1117,#121826);
+color:white;
+}
+
+/* SIDEBAR */
+
+.sidebar{
+width:250px;
+height:100vh;
+background:#151922;
+padding:25px;
+border-right:1px solid #1f2630;
+position:fixed;
+top:0;
+left:0;
+z-index:1000;
+transition:.3s;
+}
+
+.logo{
+font-size:20px;
+font-weight:600;
+margin-bottom:40px;
+}
+
+.menu a{
+display:flex;
+align-items:center;
+gap:12px;
+text-decoration:none;
+color:#cbd5e1;
+padding:12px;
+border-radius:8px;
+margin-bottom:10px;
+transition:.3s;
+}
+
+.menu a:hover{
+background:#1e2430;
+color:white;
+}
+
+/* MAIN */
+
+.main{
+margin-left:250px;
+width:100%;
+min-height:100vh;
+}
+
+/* TOPBAR */
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 40px;
+background:#151922;
+border-bottom:1px solid #1f2630;
+}
+
+.search{
+background:#1e2430;
+padding:10px 20px;
+border-radius:20px;
+width:300px;
+border:none;
+color:white;
+}
+
+/* HAMBURGER */
+
+.hamburger{
+display:none;
+font-size:22px;
+cursor:pointer;
+}
+
+/* CONTENT */
+
+.content{
+padding:40px;
+}
+
+/* DNA STAT CARDS */
+
+.dna-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+margin-bottom:40px;
+}
+
+.dna-card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+padding:25px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.1);
+text-align:center;
+}
+
+.dna-card h2{
+font-size:38px;
+color:#22d3ee;
+margin-top:10px;
+}
+
+/* CHART */
+
+.chart-box{
+background:rgba(255,255,255,0.05);
+padding:30px;
+border-radius:12px;
+border:1px solid rgba(255,255,255,0.1);
+margin-bottom:40px;
+height:350px;
+}
+
+.chart-box canvas{
+width:100%!important;
+height:100%!important;
+}
+
+/* TABLE */
+
+.gene-table{
+width:100%;
+border-collapse:collapse;
+background:#151922;
+border-radius:10px;
+overflow:hidden;
+}
+
+.gene-table th{
+background:#1e2430;
+padding:14px;
+text-align:left;
+}
+
+.gene-table td{
+padding:14px;
+border-top:1px solid #1f2630;
+}
+
+.low{color:#22c55e;}
+.medium{color:#f59e0b;}
+.high{color:#ef4444;}
+
+button{
+background:#22d3ee;
+border:none;
+padding:8px 14px;
+border-radius:6px;
+cursor:pointer;
+}
+
+/* GENE CARDS */
+
+.gene-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:40px;
+}
+
+.gene-card{
+background:rgba(255,255,255,0.05);
+border:1px solid rgba(255,255,255,0.1);
+padding:20px;
+border-radius:12px;
+}
+
+/* PROGRESS */
+
+.progress{
+height:8px;
+background:#1e2430;
+border-radius:20px;
+overflow:hidden;
+margin-top:10px;
+}
+
+.progress span{
+display:block;
+height:100%;
+background:#22d3ee;
+width:75%;
+}
+
+/* OVERLAY */
+
+.overlay{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.5);
+backdrop-filter:blur(6px);
+opacity:0;
+pointer-events:none;
+transition:.3s;
+z-index:900;
+}
+
+.overlay.active{
+opacity:1;
+pointer-events:auto;
+}
+
+/* TABLET */
+
+@media(max-width:900px){
+
+.sidebar{
+left:-260px;
+}
+
+.sidebar.active{
+left:0;
+}
+
+.hamburger{
+display:block;
+}
+
+.main{
+margin-left:0;
+}
+
+.search{
+width:180px;
+}
+
+.dna-grid{
+grid-template-columns:1fr 1fr;
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+.dna-grid{
+grid-template-columns:1fr;
+}
+
+.search{
+display:none;
+}
+
+.content{
+padding:25px;
+}
+
+.gene-table{
+display:block;
+overflow-x:auto;
+white-space:nowrap;
+}
+
+button{
+width:100%;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<div class="logo">Stackly</div>
+
+<div class="menu">
+<a href="patientdashboard.html"><i class="fa fa-home"></i> Dashboard</a>
+<a href="profile.html"><i class="fa fa-user"></i> My Profile</a>
+<a href="labtest.html"><i class="fa fa-vial"></i> Lab Tests</a>
+<a href="aianalysis.html"><i class="fa fa-brain"></i> AI Analysis</a>
+<a href="geneticreports.html"><i class="fa fa-dna"></i> Genetic Reports</a>
+<a href="medicalrecords.html"><i class="fa fa-file-medical"></i> Medical Records</a>
+<a href="login.html"><i class="fa fa-arrow-left"></i> Back</a>
+</div>
+
+</div>
+
+<div class="overlay" onclick="closeMenu()"></div>
+
+<div class="main">
+
+<div class="topbar">
+
+<div class="hamburger" onclick="toggleMenu()">
+<i class="fa fa-bars"></i>
+</div>
+
+<input class="search" placeholder="Search gene report">
+
+<div>
+<i class="fa fa-bell"></i>
+&nbsp;&nbsp; Patient Name
+</div>
+
+</div>
+
+<div class="content">
+
+<h1>Genetic DNA Analysis</h1>
+
+<div class="dna-grid">
+
+<div class="dna-card">
+<p>Genome Match</p>
+<h2>76%</h2>
+</div>
+
+<div class="dna-card">
+<p>Mutation Rate</p>
+<h2>12%</h2>
+</div>
+
+<div class="dna-card">
+<p>Healthy Genes</p>
+<h2>88%</h2>
+</div>
+
+<div class="dna-card">
+<p>Risk Genes</p>
+<h2>14%</h2>
+</div>
+
+</div>
+
+<div class="chart-box">
+
+<h3>Genome Composition</h3>
+<canvas id="dnaChart"></canvas>
+
+</div>
+
+<h2>Gene Mutation Report</h2>
+
+<table class="gene-table">
+
+<tr>
+<th>Gene</th>
+<th>Mutation</th>
+<th>Risk</th>
+<th>Report</th>
+</tr>
+
+<tr>
+<td>BRCA1</td>
+<td>Detected</td>
+<td class="high">High</td>
+<td><button>View</button></td>
+</tr>
+
+<tr>
+<td>TP53</td>
+<td>None</td>
+<td class="low">Low</td>
+<td><button>View</button></td>
+</tr>
+
+<tr>
+<td>APOE</td>
+<td>Variant</td>
+<td class="medium">Medium</td>
+<td><button>View</button></td>
+</tr>
+
+</table>
+
+<div class="gene-grid">
+
+<div class="gene-card">
+<h3>Heart Disease Gene</h3>
+<p>Moderate genetic risk detected.</p>
+<div class="progress"><span></span></div>
+</div>
+
+<div class="gene-card">
+<h3>Diabetes Gene</h3>
+<p>Low mutation probability.</p>
+<div class="progress"><span></span></div>
+</div>
+
+<div class="gene-card">
+<h3>Cancer Gene</h3>
+<p>BRCA1 mutation detected.</p>
+<div class="progress"><span></span></div>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const sidebar=document.querySelector(".sidebar");
+const overlay=document.querySelector(".overlay");
+
+function toggleMenu(){
+sidebar.classList.toggle("active");
+overlay.classList.toggle("active");
+}
+
+function closeMenu(){
+sidebar.classList.remove("active");
+overlay.classList.remove("active");
+}
+
+new Chart(document.getElementById("dnaChart"),{
+type:"doughnut",
+data:{
+labels:["Healthy Genes","Mutated Genes","Unknown"],
+datasets:[{
+data:[70,15,15],
+backgroundColor:["#22c55e","#ef4444","#22d3ee"]
+}]
+},
+options:{
+responsive:true,
+maintainAspectRatio:false,
+plugins:{legend:{labels:{color:"white"}}}
+}
+});
+
+</script>
+
+</body>
+</html>
