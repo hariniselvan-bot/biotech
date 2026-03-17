@@ -217,7 +217,11 @@ display:none;
 }
 
 }
-
+.logo img{
+height:60px;
+width:auto;
+display:block;
+}
 </style>
 </head>
 
@@ -226,8 +230,9 @@ display:none;
 <!-- SIDEBAR -->
 
 <div class="sidebar" id="sidebar">
-
-<div class="logo">Stackly</div>
+<div class="logo">
+<img src="logo.webp" alt="Stackly Logo">
+</div>
 
 <div class="menu">
 <a href="admindashboard.html"><i class="fa fa-home"></i> Dashboard</a>
@@ -313,28 +318,28 @@ display:none;
 <td>Blood Test</td>
 <td class="status-complete">Completed</td>
 <td>120</td>
-<td><button>View</button></td>
+<td><button onclick="window.location.href='404.html'">View</button></td>
 </tr>
 
 <tr>
 <td>DNA Sequencing</td>
 <td class="status-progress">In Progress</td>
 <td>64</td>
-<td><button>View</button></td>
+<td><button onclick="window.location.href='404.html'">View</button></td>
 </tr>
 
 <tr>
 <td>COVID Test</td>
 <td class="status-complete">Completed</td>
 <td>210</td>
-<td><button>View</button></td>
+<td><button onclick="window.location.href='404.html'">View</button></td>
 </tr>
 
 <tr>
 <td>Genome Mapping</td>
 <td class="status-pending">Pending</td>
 <td>32</td>
-<td><button>View</button></td>
+<td><button onclick="window.location.href='404.html'">View</button></td>
 </tr>
 
 </table>

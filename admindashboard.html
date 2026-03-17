@@ -217,7 +217,11 @@ display:none;
 }
 
 }
-
+.logo img{
+height:60px;
+width:auto;
+display:block;
+}
 </style>
 </head>
 
@@ -227,7 +231,9 @@ display:none;
 
 <div class="sidebar" id="sidebar">
 
-<div class="logo">Stackly</div>
+<div class="logo">
+<img src="logo.webp" alt="Stackly Logo">
+</div>
 
 <div class="menu">
 <a href="admindashboard.html"><i class="fa fa-home"></i> Dashboard</a>
@@ -311,30 +317,30 @@ display:none;
 
 <tr>
 <td>Heart Disease</td>
-<td class="medium">Medium</td>
+<td class="risk-medium">Medium</td>
 <td>68%</td>
-<td><button>View</button></td>
+<td><button onclick="window.location.href='404.html'">View</button></td>
 </tr>
 
 <tr>
 <td>Diabetes</td>
-<td class="low">Low</td>
+<td class="risk-low">Low</td>
 <td>40%</td>
-<td><button>View</button></td>
+<td><button onclick="window.location.href='404.html'">View</button></td>
 </tr>
 
 <tr>
 <td>Cholesterol</td>
-<td class="high">High</td>
+<td class="risk-high">High</td>
 <td>82%</td>
-<td><button>View</button></td>
+<td><button onclick="window.location.href='404.html'">View</button></td>
 </tr>
 
 <tr>
 <td>Blood Pressure</td>
-<td class="medium">Medium</td>
+<td class="risk-medium">Medium</td>
 <td>61%</td>
-<td><button>View</button></td>
+<td><button onclick="window.location.href='404.html'">View</button></td>
 </tr>
 
 </table>

@@ -288,7 +288,11 @@ width:100%;
 }
 
 }
-
+.logo img{
+height:60px;
+width:auto;
+display:block;
+}
 </style>
 </head>
 
@@ -296,7 +300,9 @@ width:100%;
 
 <div class="sidebar">
 
-<div class="logo">Stackly</div>
+<div class="logo">
+<img src="logo.webp" alt="Stackly Logo">
+</div>
 
 <div class="menu">
 <a href="patientdashboard.html"><i class="fa fa-home"></i> Dashboard</a>
@@ -379,21 +385,21 @@ width:100%;
 <td>BRCA1</td>
 <td>Detected</td>
 <td class="high">High</td>
-<td><button>View</button></td>
+<td><button onclick="window.location.href='404.html'">View</button></td>
 </tr>
 
 <tr>
 <td>TP53</td>
 <td>None</td>
 <td class="low">Low</td>
-<td><button>View</button></td>
+<td><button onclick="window.location.href='404.html'">View</button></td>
 </tr>
 
 <tr>
 <td>APOE</td>
 <td>Variant</td>
 <td class="medium">Medium</td>
-<td><button>View</button></td>
+<td><button onclick="window.location.href='404.html'">View</button></td>
 </tr>
 
 </table>

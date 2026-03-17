@@ -306,7 +306,11 @@ font-size:22px;
 button{
 width:100%;
 }
-
+.logo img{
+height:60px;
+width:auto;
+display:block;
+}
 }
 </style>
 </head>
@@ -315,7 +319,9 @@ width:100%;
 
 <div class="sidebar">
 
-<div class="logo">Stackly</div>
+<div class="logo">
+<img src="logo.webp" alt="Stackly Logo">
+</div>
 
 <div class="menu">
 <a href="patientdashboard.html"><i class="fa fa-home"></i> Dashboard</a>
@@ -375,7 +381,7 @@ width:100%;
 <span class="status completed">Completed</span>
 <p>Date: 12 March 2026</p>
 <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
-<button>Download Report</button>
+<button onclick="window.location.href='404.html'">View</button>
 </div>
 
 <div class="test-card">
@@ -383,7 +389,7 @@ width:100%;
 <span class="status processing">Processing</span>
 <p>Date: 15 March 2026</p>
 <div class="progress-bar"><div class="progress" style="width:60%"></div></div>
-<button>View Status</button>
+<button onclick="window.location.href='404.html'">View</button>
 </div>
 
 <div class="test-card">
@@ -391,7 +397,7 @@ width:100%;
 <span class="status pending">Pending</span>
 <p>Date: 20 March 2026</p>
 <div class="progress-bar"><div class="progress" style="width:25%"></div></div>
-<button>View Details</button>
+<button onclick="window.location.href='404.html'">View</button>
 </div>
 
 <div class="test-card">
@@ -399,7 +405,7 @@ width:100%;
 <span class="status completed">Completed</span>
 <p>Date: 10 March 2026</p>
 <div class="progress-bar"><div class="progress" style="width:100%"></div></div>
-<button>Download Report</button>
+<button onclick="window.location.href='404.html'">View</button>
 </div>
 
 </div>
