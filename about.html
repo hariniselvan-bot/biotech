@@ -1487,18 +1487,23 @@ showTestimonial(index);
 },5000);
 
 </script>
-
 <footer class="site-footer">
 
 <div class="footer-container">
 
 <!-- COLUMN 1 -->
 <div class="footer-col">
-<h3>Stackly</h3>
+
+<!-- LOGO -->
+<a href="index.html" class="footer-logo">
+<img src="logo.webp" alt="Logo">
+</a>
+
 <p>
 Limitless marathons. Lightning sports.  
 Studios built for superfans.
 </p>
+
 </div>
 
 
@@ -1534,11 +1539,9 @@ Studios built for superfans.
 <h3>Follow Us</h3>
 
 <div class="social-icons">
-
 <a href="404.html"><i class="fab fa-instagram"></i></a>
 <a href="404.html"><i class="fab fa-youtube"></i></a>
 <a href="404.html"><i class="fab fa-twitter"></i></a>
-
 </div>
 
 </div>
@@ -1550,12 +1553,15 @@ Studios built for superfans.
 </div>
 
 </footer>
+
+
+
 <style>
-    .site-footer{
+.site-footer{
 background:#0b0c1a;
 color:#cbd5e1;
 padding:80px 8% 30px;
-font-family:Poppins, sans-serif;
+font-family:Poppins,sans-serif;
 }
 
 .footer-container{
@@ -1572,6 +1578,24 @@ margin-bottom:20px;
 
 .footer-col p{
 line-height:1.6;
+}
+
+/* LOGO */
+.footer-logo{
+display:inline-block;
+margin-bottom:18px;
+}
+
+.footer-logo img{
+height:55px;
+width:auto;
+display:block;
+object-fit:contain;
+transition:.3s ease;
+}
+
+.footer-logo img:hover{
+transform:scale(1.05);
 }
 
 .footer-col ul{
@@ -1593,8 +1617,7 @@ transition:.3s;
 color:#14b8a6;
 }
 
-/* SOCIAL ICONS */
-
+/* SOCIAL */
 .social-icons{
 display:flex;
 gap:15px;
@@ -1613,8 +1636,21 @@ color:white;
 font-size:18px;
 transition:.3s;
 }
-/* MOBILE */
 
+.social-icons a:hover{
+background:#14b8a6;
+}
+
+/* BOTTOM */
+.footer-bottom{
+border-top:1px solid rgba(255,255,255,.1);
+padding-top:20px;
+text-align:left;
+font-size:14px;
+color:#94a3b8;
+}
+
+/* TABLET */
 @media(max-width:900px){
 
 .footer-container{
@@ -1629,10 +1665,6 @@ flex-direction:column;
 align-items:center;
 }
 
-.footer-col ul{
-padding:0;
-}
-
 .social-icons{
 justify-content:center;
 }
@@ -1643,6 +1675,7 @@ text-align:center;
 
 }
 
+/* MOBILE */
 @media(max-width:600px){
 
 .footer-container{
@@ -1655,40 +1688,12 @@ text-align:center;
 align-items:center;
 }
 
+.footer-logo img{
+height:48px;
+}
+
 .footer-bottom{
 text-align:center;
-}
-
-}
-.social-icons a:hover{
-background:#14b8a6;
-}
-
-/* BOTTOM */
-
-.footer-bottom{
-border-top:1px solid rgba(255,255,255,.1);
-padding-top:20px;
-text-align:left;
-font-size:14px;
-color:#94a3b8;
-}
-
-/* MOBILE */
-
-@media(max-width:900px){
-
-.footer-container{
-grid-template-columns:1fr 1fr;
-gap:30px;
-}
-
-}
-
-@media(max-width:600px){
-
-.footer-container{
-grid-template-columns:1fr;
 }
 
 }
