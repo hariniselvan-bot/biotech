@@ -803,18 +803,23 @@ window.location.href="404.html";
 
 </script>
 
-
 <footer class="site-footer">
 
 <div class="footer-container">
 
 <!-- COLUMN 1 -->
 <div class="footer-col">
-<h3>Stackly</h3>
+
+<!-- LOGO -->
+<a href="index.html" class="footer-logo">
+<img src="logo.webp" alt="Logo">
+</a>
+
 <p>
 Limitless marathons. Lightning sports.  
 Studios built for superfans.
 </p>
+
 </div>
 
 
@@ -850,11 +855,9 @@ Studios built for superfans.
 <h3>Follow Us</h3>
 
 <div class="social-icons">
-
 <a href="404.html"><i class="fab fa-instagram"></i></a>
 <a href="404.html"><i class="fab fa-youtube"></i></a>
 <a href="404.html"><i class="fab fa-twitter"></i></a>
-
 </div>
 
 </div>
@@ -866,59 +869,15 @@ Studios built for superfans.
 </div>
 
 </footer>
+
+
+
 <style>
-    /* MOBILE */
-
-@media(max-width:900px){
-
-.footer-container{
-grid-template-columns:1fr 1fr;
-gap:30px;
-text-align:center;
-}
-
-.footer-col{
-display:flex;
-flex-direction:column;
-align-items:center;
-}
-
-.footer-col ul{
-padding:0;
-}
-
-.social-icons{
-justify-content:center;
-}
-
-.footer-bottom{
-text-align:center;
-}
-
-}
-
-@media(max-width:600px){
-
-.footer-container{
-grid-template-columns:1fr;
-gap:30px;
-text-align:center;
-}
-
-.footer-col{
-align-items:center;
-}
-
-.footer-bottom{
-text-align:center;
-}
-
-}
-    .site-footer{
+.site-footer{
 background:#0b0c1a;
 color:#cbd5e1;
 padding:80px 8% 30px;
-font-family:Poppins, sans-serif;
+font-family:Poppins,sans-serif;
 }
 
 .footer-container{
@@ -935,6 +894,24 @@ margin-bottom:20px;
 
 .footer-col p{
 line-height:1.6;
+}
+
+/* LOGO */
+.footer-logo{
+display:inline-block;
+margin-bottom:18px;
+}
+
+.footer-logo img{
+height:55px;
+width:auto;
+display:block;
+object-fit:contain;
+transition:.3s ease;
+}
+
+.footer-logo img:hover{
+transform:scale(1.05);
 }
 
 .footer-col ul{
@@ -956,8 +933,7 @@ transition:.3s;
 color:#14b8a6;
 }
 
-/* SOCIAL ICONS */
-
+/* SOCIAL */
 .social-icons{
 display:flex;
 gap:15px;
@@ -982,7 +958,6 @@ background:#14b8a6;
 }
 
 /* BOTTOM */
-
 .footer-bottom{
 border-top:1px solid rgba(255,255,255,.1);
 padding-top:20px;
@@ -991,21 +966,50 @@ font-size:14px;
 color:#94a3b8;
 }
 
-/* MOBILE */
-
+/* TABLET */
 @media(max-width:900px){
 
 .footer-container{
 grid-template-columns:1fr 1fr;
 gap:30px;
+text-align:center;
+}
+
+.footer-col{
+display:flex;
+flex-direction:column;
+align-items:center;
+}
+
+.social-icons{
+justify-content:center;
+}
+
+.footer-bottom{
+text-align:center;
 }
 
 }
 
+/* MOBILE */
 @media(max-width:600px){
 
 .footer-container{
 grid-template-columns:1fr;
+gap:30px;
+text-align:center;
+}
+
+.footer-col{
+align-items:center;
+}
+
+.footer-logo img{
+height:48px;
+}
+
+.footer-bottom{
+text-align:center;
 }
 
 }
